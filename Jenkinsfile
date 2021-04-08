@@ -1,9 +1,8 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        git(changelog: true, poll: true, branch: 'main', url: 'git@github.com:alexmello82/terraform-jenkins-gcp.git', credentialsId: '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')
         sh '''pipeline {
     agent {
       node {
