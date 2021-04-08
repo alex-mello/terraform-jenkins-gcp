@@ -1,47 +1,34 @@
 pipeline {
   agent any
   stages {
-    stage('') {
+    stage('error') {
       steps {
-        sh '''pipeline {
-    agent {
-      node {
-        label "master"
-      } 
+        sh '''pipeline { 
+    agent any 
+    options {
+        skipStagesAfterUnstable()
     }
-
     stages {
-      stage(\'fetch_latest_code\') {
-        steps {
-          git credentialsId: \'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\', url: \'git@github.com:alexmello82/terraform-jenkins-gcp.git\'
+        stage(\'Build\') { 
+            steps { 
+                sh \'make\' 
+            }
         }
-      }
-
-      stage(\'TF Init&Plan\') {
-        steps {
-          sh \'terraform init\'
-          sh \'terraform plan\'
-        }      
-      }
-
-      stage(\'Approval\') {
-        steps {
-          script {
-            def userInput = input(id: \'confirm\', message: \'Apply Terraform?\', parameters: [ [$class: \'BooleanParameterDefinition\', defaultValue: false, description: \'Apply terraform\', name: \'confirm\'] ])
-          }
+        stage(\'Test\'){
+            steps {
+                sh \'make check\'
+                junit \'reports/**/*.xml\' 
+            }
         }
-      }
-
-      stage(\'TF Apply\') {
-        steps {
-          sh \'terraform apply -input=false\'
+        stage(\'Deploy\') {
+            steps {
+                sh \'make publish\'
+            }
         }
-      }
-    } 
-  }
-'''
-        }
-      }
-
     }
+}'''
+      }
+    }
+
   }
+}
