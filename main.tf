@@ -1,3 +1,8 @@
+provider "google" {
+  project = "ansible-gcp-354402"
+  
+}
+
 module "create_vpc" {
   source      = "./network"
   vpc_name    = "vpc-dev-iac"
@@ -13,4 +18,11 @@ module "create_instance" {
   zone       = "us-central1-a"
   vm_disk    = "debian-cloud/debian-11"
   create_vpc = module.create_vpc.subnet_self_link
+
+  depends_on = [
+    module.create_vpc
+  ]
+
+
 }
+
