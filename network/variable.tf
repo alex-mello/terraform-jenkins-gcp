@@ -34,10 +34,16 @@ variable "network_id" {
     default = "network-terraform"
 }
 
-variable "fw" {
+variable "fw_service" {
     type = string
-    description = "Firewall da Rede"
-    default = "fw"
+    description = "Regra de Firewall da Rede Serviço WEB"
+    default = "fw-service"
+}
+
+variable "fw_iap" {
+    type = string
+    description = "RegraFirewall para acessar as instancias privadas com IAP"
+    default = "fw-iap"
 }
 
 variable "network_fw" {
@@ -60,7 +66,19 @@ variable "tcp" {
 
 variable "ports" {
     type = list(any)
-    description = "Regras de Firewall SSH, Http e Https"
-    default = [ "22", "80", "443" ]
-  
+    description = "Regras de Firewall Http e Https"
+    default = [ "80", "443" ]
+}
+
+
+variable "tcp_iap" {
+    type = string
+    description = "Protocolo TCP IAP"
+    default = "tcp"
+}
+
+variable "ports_iap" {
+    type = list(any)
+    description = "Regras de Firewall SSH e RDP para acesso IAP"
+    default = [ "22", "3389" ]
 }
