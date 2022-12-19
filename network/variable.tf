@@ -52,6 +52,12 @@ variable "icmp" {
     default = "icmp"
 }
 
+variable "tcp" {
+    type = string
+    description = "Protocolo TCP"
+    default = "tcp"
+}
+
 variable "ports" {
     type = list(any)
     description = "Regras de Firewall SSH, Http e Https"

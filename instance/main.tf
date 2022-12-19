@@ -12,9 +12,9 @@ resource "google_compute_instance" "vm1" {
   network_interface {
     subnetwork = var.create_vpc
 
-    access_config {
-      // Ephemeral IP
-    }
+    # access_config {
+    #   // Ephemeral Public IP
+    # }
   }
   # metadata = {
   #   ssh-keys = var.metadata-ssh

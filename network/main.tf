@@ -18,9 +18,9 @@ resource "google_compute_firewall" "fw" {
       protocol = var.icmp
     }
     allow {
-      protocol = "tcp"
-      ports = [ "22", "80", "443" ]
+      protocol = var.tcp
+      ports = var.ports
     }
-    source_tags = ["web"]
+    source_tags = []
   
 }
