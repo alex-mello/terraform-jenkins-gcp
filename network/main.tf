@@ -21,5 +21,6 @@ resource "google_compute_firewall" "fw" {
       protocol = "tcp"
       ports = [ "22", "80", "443" ]
     }
+    source_tags = ["web"]
   
 }
