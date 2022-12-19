@@ -1,10 +1,4 @@
  pipeline {
-    agent {
-      node {
-        label "main"
-      } 
-    }
-
     stages {
       stage('fetch_latest_code') {
         steps {
