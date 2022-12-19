@@ -1,4 +1,5 @@
  pipeline {
+    agent none
     stages {
       stage('fetch_latest_code') {
         steps {
