@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage ("checkout from GIT") {
             steps {
-                git branch: 'main', credentialsId: 'dab660f7-182d-40c9-b929-b90ad50af52a', url: 'https://github.com/alexmello82/demo-counter-app.git'
+                git branch: 'main', credentialsId: 'dab660f7-182d-40c9-b929-b90ad50af52a', url: 'https://github.com/alexmello82/terraform-jenkins-gcp.git'
             }
         }
         stage ("terraform init") {
