@@ -3,7 +3,7 @@
     stages {
       stage('fetch_latest_code') {
         steps {
-          git url: 'git@github.com:alexmello82/terraform-jenkins-gcp.git'
+          git credentialsId: '09d5474f-f77e-4893-9750-df15bcfe7e59', url: 'git@github.com:alexmello82/terraform-jenkins-gcp.git'
         }
       }
 
