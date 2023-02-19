@@ -1,1 +1,1 @@
-- Criação de VMS na GCP com Terraform (Terraform intregrado com Jenkins)
+- Criação de VMS no GCP com Terraform (Terraform intregrado com Jenkins)
